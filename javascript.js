@@ -48,13 +48,35 @@ function getRandomIntInclusive(min, max) {
     else return "Your choice is not valid";
   }
 
-function getPlayerChoice() {
-    let playerChoice = str.toUpperCase();
-    return playerChoice;
-} 
+function game() {
+    let computerScore = 0;
+    let playerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        let str = (prompt("Please enter your choice between Rock Paper Sciccors")).toString();
+        let playerChoice = str.toUpperCase();
+        let computerSelection = getComputerChoice();
+        let result = playRound(playerChoice, computerSelection);
+        console.log(result);
+        if (result === "You Win! Rock beats Scissors" || result === "You Win! Paper beats Rock" || result === "You Win! Scissors beats Paper") {
+            playerScore++;
+        }
+        else if (result === "You Lose! Paper beats Rock" || result === "You Lose! Scissors beats Paper" || result === "You Lose! Rock beats Scissors") {
+            computerScore++;
+        }
+        console.log(playerScore,computerScore);
+        console.log(playerChoice,computerSelection);
+     }
+     if (playerScore > computerScore) {
+        return "You Win!";
+     }
+     else if (computerScore > playerScore) {
+        return "You Lose!";
+     }
+     else if (playerScore === computerScore) {
+        return "It is a Draw!";
+     }
+}
   
-  let str = (prompt("Please enter your choice between Rock Paper Sciccors")).toString();
-  const playerSelection = getPlayerChoice(str);
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+console.log(game());
+
 
