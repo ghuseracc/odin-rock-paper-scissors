@@ -28,6 +28,24 @@ function getRandomIntInclusive(min, max) {
     else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
         return "You Win! Rock beats Scissors";
     }
+    else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+        return "You Win! Paper beats Rock";
+    }
+    else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
+        return "It is a Draw! Both of you chose Paper";
+    }
+    else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
+        return "You Lose! Scissors beats Paper";
+    }
+    else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+        return "You Lose! Rock beats Scissors";
+    }
+    else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+        return "You Win! Scissors beats Paper";
+    }
+    else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
+        return "It is a Draw! Both of you chose Scissors";
+    }
   }
    
   const playerSelection = "ROCK";
