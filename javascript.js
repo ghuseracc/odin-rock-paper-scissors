@@ -1,6 +1,5 @@
 function getComputerChoice() {
     let choice = getRandomIntInclusive(1,3);
-    console.log(choice)
     if (choice === 1) {
         return "ROCK";
     }
@@ -46,8 +45,16 @@ function getRandomIntInclusive(min, max) {
     else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
         return "It is a Draw! Both of you chose Scissors";
     }
+    else return "Your choice is not valid";
   }
-   
-  const playerSelection = "ROCK";
+
+function getPlayerChoice() {
+    let playerChoice = str.toUpperCase();
+    return playerChoice;
+} 
+  
+  let str = (prompt("Please enter your choice between Rock Paper Sciccors")).toString();
+  const playerSelection = getPlayerChoice(str);
   const computerSelection = getComputerChoice();
   console.log(playRound(playerSelection, computerSelection));
+
