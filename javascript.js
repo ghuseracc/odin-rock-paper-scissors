@@ -60,7 +60,7 @@ function game() {
         if (result === "You Win! Rock beats Scissors" || result === "You Win! Paper beats Rock" || result === "You Win! Scissors beats Paper") {
             playerScore++;
         }
-        else if (result === "You Lose! Paper beats Rock" || result === "You Lose! Scissors beats Paper" || result === "You Lose! Rock beats Scissors") {
+        else if (result === "You Lose! Paper beats Rock" || result === "You Lose! Scissors beats Paper" || result === "You Lose! Rock beats Scissors" || result === "Your choice is not valid") {
             computerScore++;
         }
         console.log(playerScore,computerScore);
