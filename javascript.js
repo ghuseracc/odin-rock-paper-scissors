@@ -1,12 +1,12 @@
 function getComputerChoice() {
-    let choice = getRandomIntInclusive(1,3);
-    if (choice === 1) {
+    let computerChoice = getRandomIntInclusive(1,3);
+    if (computerChoice === 1) {
         return "ROCK";
     }
-    else if (choice === 2) {
+    else if (computerChoice === 2) {
         return "PAPER";
     }
-    else if (choice === 3) {
+    else if (computerChoice === 3) {
         return "SCISSORS";
     }
 }
@@ -52,16 +52,21 @@ function game() {
     let computerScore = 0;
     let playerScore = 0;
     for (let i = 0; i < 5; i++) {
-        let str = (prompt("Please enter your choice between Rock Paper Sciccors")).toString();
-        let playerChoice = str.toUpperCase();
+        let playerInput = (prompt("Please enter your choice between Rock Paper Sciccors")).toString();
+        let playerChoice = playerInput.toUpperCase();
         let computerSelection = getComputerChoice();
-        let result = playRound(playerChoice, computerSelection);
-        console.log(result);
-        if (result === "You Win! Rock beats Scissors" || result === "You Win! Paper beats Rock" || result === "You Win! Scissors beats Paper") {
+        let roundResult = playRound(playerChoice, computerSelection);
+        console.log(roundResult);
+        if (roundResult === "You Win! Rock beats Scissors" || 
+            roundResult === "You Win! Paper beats Rock" || 
+            roundResult === "You Win! Scissors beats Paper") {
             playerScore++;
         }
-        else if (result === "You Lose! Paper beats Rock" || result === "You Lose! Scissors beats Paper" || result === "You Lose! Rock beats Scissors" || result === "Your choice is not valid") {
-            computerScore++;
+        else if (roundResult === "You Lose! Paper beats Rock" || 
+                 roundResult === "You Lose! Scissors beats Paper" || 
+                 roundResult === "You Lose! Rock beats Scissors" || 
+                 roundResult === "Your choice is not valid") {
+                 computerScore++;
         }
         console.log(playerScore,computerScore);
         console.log(playerChoice,computerSelection);
