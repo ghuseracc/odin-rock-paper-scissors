@@ -46,7 +46,10 @@ function getRandomIntInclusive(min, max) {
         return "It is a Draw! Both of you chose Scissors";
     }
     else return "Your choice is not valid";
-  }
+}
+
+
+const container = document.querySelector('#container');
 
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
@@ -54,8 +57,15 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        console.log(playRound(button.id, getComputerChoice()));
-      });
+        div.textContent = playRound(button.id, getComputerChoice());
     });
+});
 
+// creates a new div referenced in the variable 'div'
+const div = document.createElement('div');
+div.classList.add('content');
+let computerScore = 0;
+let playerScore = 0;
+
+container.appendChild(div);
 
