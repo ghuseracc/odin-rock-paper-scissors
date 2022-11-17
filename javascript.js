@@ -45,27 +45,52 @@ function getRandomIntInclusive(min, max) {
     else if (playerSelection === "SCISSORS" && computerSelection === "SCISSORS") {
         return "It is a Draw! Both of you chose Scissors";
     }
-    else return "Your choice is not valid";
 }
 
+let computerScore = 0;
+let playerScore = 0;
 
 const container = document.querySelector('#container');
-
-// buttons is a node list. It looks and acts much like an array.
-const buttons = document.querySelectorAll('button');
-// we use the .forEach method to iterate through each button
-buttons.forEach((button) => {
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-        div.textContent = playRound(button.id, getComputerChoice());
-    });
-});
 
 // creates a new div referenced in the variable 'div'
 const div = document.createElement('div');
 div.classList.add('content');
-let computerScore = 0;
-let playerScore = 0;
-
 container.appendChild(div);
+    
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+    
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        let playerChoice = button.id;
+        let computerSelection = getComputerChoice();
+        let roundResult = playRound(playerChoice, computerSelection);
+        if (roundResult === "You Win! Rock beats Scissors" || 
+            roundResult === "You Win! Paper beats Rock" || 
+            roundResult === "You Win! Scissors beats Paper") {
+            playerScore++;
+        }
+        else if (roundResult === "You Lose! Paper beats Rock" || 
+                 roundResult === "You Lose! Scissors beats Paper" || 
+                 roundResult === "You Lose! Rock beats Scissors") {
+                 computerScore++;
+        }
+        div.textContent = roundResult + "\nPlayer " + playerScore + "\nComputer " + computerScore;
+        if (playerScore === 5) {
+            div.textContent = "You Win!" + "\nPlayer " + playerScore + "\nComputer " + computerScore;
+            playerScore = 0;
+            computerScore = 0;
+            }
+            else if (computerScore === 5 ) {
+            div.textContent = "You Lose!" + "\nPlayer " + playerScore + "\nComputer " + computerScore;
+            playerScore = 0;
+            computerScore = 0;
+            }
+    });
+});
+
+
 
